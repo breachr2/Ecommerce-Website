@@ -4,7 +4,7 @@ The frontend of this application is developed using Nextjs. To get a local serve
 
 ### Installation
 
-1. CD into the client directory
+1. CD into the client directory, if you haven't done so already
 
 ```
 cd client
@@ -22,5 +22,5 @@ npm install
 npm run dev
 ```
 
-4. To visit the app navigate to:
+4. To visit the app navigate to
    `localhost:3000`
