@@ -25,12 +25,13 @@ POSTGRES_PASSWORD=<your_postgres_password>
 ```
 
 ### Generate your Prisma Client
-Run the following command to generate the Prisma Client, which will include types based on your database schema:
+Run the following command to generate the Prisma Client, which will include types based on your database schema. This command is a one-time process, only run it again if the prisma schema schema ever changes.
 ```
 npx prisma generate
 ```
 
-### Apply the Prisma migration against your database:
+### Apply the Prisma migration against your database
+This command is a one-time process, only run it again if the prisma schema ever changes.
 ```
 npx prisma migrate --name init
 ```
