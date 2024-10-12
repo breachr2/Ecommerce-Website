@@ -6,7 +6,7 @@ This project depends on some environment variables. If you are running this proj
 
 Here are the required env variables:
 ```
-POSTGRES_PASSWORD=
+POSTGRES_PASSWORD=postgresql://<username>:<password>@<host>:<port>/<database>
 ```
 
 To start up the PostgreSQL database, make sure to have Docker installed. If you are on Mac or Windows, you will need to install Docker Desktop.

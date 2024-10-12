@@ -2,8 +2,14 @@
 
 This is a backend server created using the Expressjs framework. It uses Prisma, an ORM to connect to the database to allow for simplified database interactions. In order to connect migrate prisma to your database, make sure your PostgreSQL container is up and running.
 
+# Prerequisites
+Ensure that you have the following tools installed:
+* NPM (node package manager)
+* Node
+* Docker
+
 ### Installation
-Run the following command to install dependecies:
+Run the following command to install all dependencies:
 ```
 npm install
 ```
@@ -13,24 +19,30 @@ This project depends on some environment variables. If you are running this proj
 
 Here are the required env variables:
 ```
-PORT=
-DATABASE_URL=
-POSTGRES_PASSWORD=
+PORT=<your_port_number>
+DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
+POSTGRES_PASSWORD=<your_postgres_password>
 ```
 
 ### Generate your Prisma Client
-Run the following command to generate the Prisma Client which will include types based on your database schema:
+Run the following command to generate the Prisma Client, which will include types based on your database schema:
 ```
 npx prisma generate
 ```
 
-Apply the Prisma migration against your database:
+### Apply the Prisma migration against your database:
 ```
 npx prisma migrate --name init
 ```
 
-### Seed your database (One time process)
+### Seed your database (One-time process)
 To set your database with some initial data, run the following command:
 ```
 npm run seed
+```
+
+### Starting a development server
+To start up a development server, run the following command:
+```
+npm run dev
 ```
