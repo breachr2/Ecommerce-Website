@@ -29,3 +29,31 @@ To stop the PostgreSQL container, run the command:
 ```
 docker-compose down
 ```
+
+### Getting Started with Terraform
+This guide provides step-by-step instructions to help you get started using Terraform with AWS to manage your cloud infrastructure.
+
+1. Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+After installing the AWS CLI, you need to configure it with your credentials using your access key and secret key:
+```
+aws configure
+```
+2. Install [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
+### Running the Terraform code
+1. Change directory into the infrastructure directory
+```
+cd infrastructure
+```
+2. Initalize Terraform, to install the necessary provider plugins
+```
+terraform init
+```
+3. Apply Infrastructure Changes
+```
+terraform plan
+```
+4. Destroy Resources
+```
+terraform destroy
+```
