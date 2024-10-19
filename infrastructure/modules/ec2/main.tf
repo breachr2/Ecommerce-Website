@@ -7,6 +7,11 @@ module "networking" {
   private_subnet_cidr = ["10.0.2.0/24"]
 }
 
+module "security_group" {
+  source = "../securitygroup"
+  vpc_id = module.networking.aws_vpc_id
+}
+
 # Generating a new RSA private key
 resource "tls_private_key" "rsa_4096_key" {
   algorithm = "RSA"
@@ -19,18 +24,13 @@ resource "aws_key_pair" "key_pair" {
   public_key = tls_private_key.rsa_4096_key.public_key_openssh
 }
 
-# Security group rules for EC2 instance
-resource "aws_security_group" "ec2_security_group" {
-
-}
-
 # Deploying EC2 instance into public subnet of vpc
 resource "aws_instance" "backend_server" {
-  ami           = var.ami
-  instance_type = var.instance_type
-  subnet_id     = module.networking.public_subnet_id
-
-  key_name = aws_key_pair.key_pair.key_name
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  subnet_id              = module.networking.public_subnet_id
+  key_name               = aws_key_pair.key_pair.key_name
+  vpc_security_group_ids = [module.security_group.ec2_security_group_id]
 
   tags = {
     Name = var.instance_name
