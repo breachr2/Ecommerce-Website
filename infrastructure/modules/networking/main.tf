@@ -36,6 +36,7 @@ resource "aws_internet_gateway" "vpc_internet_gateway" {
 resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.app_vpc.id
 
+  # Route traffic destined for "0.0.0.0/0" to the internet gateway
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.vpc_internet_gateway.id

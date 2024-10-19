@@ -3,14 +3,14 @@ output "aws_vpc" {
   value = aws_vpc.app_vpc.id
 }
 
-output "public_subnet" {
+output "public_subnet_id" {
   value = aws_subnet.public_subnet.id
 }
 
-output "private_subnet" {
+output "private_subnet_id" {
   value = aws_subnet.private_subnet.id
 }
 
-output "vpc_internet_gateway" {
+output "vpc_internet_gateway_id" {
   value = aws_internet_gateway.vpc_internet_gateway.id
 }
