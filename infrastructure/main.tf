@@ -20,9 +20,15 @@ module "networking" {
   private_subnet_cidr = ["10.0.2.0/24"]
 }
 
+module "security_group" {
+  source = "./modules/securitygroup"
+  vpc_id = module.networking.aws_vpc_id
+}
+
 module "ec2_instance" {
-  source        = "./modules/ec2"
-  ami           = "ami-04dd23e62ed049936"
-  instance_type = "t2.micro"
-  instance_name = "ec2_instance_server"
+  source                = "./modules/ec2"
+  ami                   = "ami-04dd23e62ed049936"
+  instance_type         = "t2.micro"
+  public_subnet_id      = module.networking.public_subnet_id
+  ec2_security_group_id = module.security_group.ec2_security_group_id
 }
