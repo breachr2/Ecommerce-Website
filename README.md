@@ -16,7 +16,7 @@ To start up the PostgreSQL database, make sure to have Docker installed. If you 
 - [Docker Desktop for Mac](https://docs.docker.com/desktop/install/windows-install/)
 - [Docker Desktop for Windows](https://docs.docker.com/desktop/install/mac-install/)
 
-To start up the PostgreSQL container, make sure Docker Desktop is up and running.
+### Starting the entire application with docker-compose
 
 Run the command:
 

@@ -1,4 +1,16 @@
-# Getting Started
+# If you are using Docker ignore the below steps
+The entire application can be run using docker-compose. Navigate to the root directory of the project and run the following command:
+```
+docker-compose up -d
+```
+To test that the frontend is up and runnnig with docker, navigate to localhost:3000 and the dashboard should be viewable.
+
+Run the command to stop the application:
+```
+docker-compose down
+```
+
+# Getting Started without Docker
 
 The frontend of this application is developed using Nextjs. To get a local server up and running follow these example steps.
 

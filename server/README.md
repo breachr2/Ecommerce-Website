@@ -1,4 +1,16 @@
-# Getting Started
+# If you are using Docker ignore the below steps
+The entire application can be run using docker-compose. Navigate to the root directory of the project and run the following command:
+```
+docker-compose up -d
+```
+To test that the backend is up and runnnig with docker, navigate to localhost:5000/api/products and the products should be viewable.
+
+Run the command to stop the application:
+```
+docker-compose down
+```
+
+# Getting Started without Docker
 
 This is a backend server created using the Expressjs framework. It uses Prisma, an ORM to connect to the database to allow for simplified database interactions. In order to connect migrate prisma to your database, make sure your PostgreSQL container is up and running.
 

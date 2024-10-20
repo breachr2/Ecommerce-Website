@@ -5,7 +5,7 @@ export default async function Home() {
   // Testing fetch call to backend
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`)
   const products = await data.json()
-  const product1 = products[11]
+  const product1 = products[0]
   return (
     <>
       <div>
