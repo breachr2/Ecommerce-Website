@@ -1,4 +1,16 @@
 services:
+  frontend:
+    container_name: inventory_frontend
+    image: inventory_frontend
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./client:/app
   backend:
     container_name: inventory_backend
     image: inventory_backend
