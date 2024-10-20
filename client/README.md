@@ -1,4 +1,4 @@
-# If you are using Docker ignore the below steps
+# If you are using Docker
 The entire application can be run using docker-compose. Navigate to the root directory of the project and run the following command:
 ```
 docker-compose up -d
