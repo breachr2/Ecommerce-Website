@@ -86,7 +86,7 @@ const CardSalesSummary = () => {
               </select>
             </div>
             {/* CHART */}
-            <ResponsiveContainer width="100%" height={350} className="px-7">
+            <ResponsiveContainer width="100%" height={300} className="px-7">
               <BarChart
                 data={salesData}
                 margin={{ top: 0, right: 0, left: -25, bottom: 0 }}
