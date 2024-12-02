@@ -44,7 +44,7 @@ const Products = () => {
 
   return (
     <div className="mx-auto pb-5 w-full">
-      {/* Search Bar */}
+      {/* SEARCH BAR */}
       <div className="mb-6">
         <div className="flex items-center border-2 border-gray-200 rounded">
           <SearchIcon className="w-5 h-5 text-gray-500 m-2" />
@@ -57,7 +57,7 @@ const Products = () => {
         </div>
       </div>
 
-      {/* Header Bar */}
+      {/* HEADER BAR */}
       <div className="flex justify-between items-center mb-6">
         <Header name="Products" />
         <button

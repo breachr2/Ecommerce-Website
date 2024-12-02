@@ -22,11 +22,13 @@ const CardPopularProducts = () => {
             {dashboardMetrics?.popularProducts.map((product) => (
               <div
                 key={product.productId}
-                className="flux items-center justify-between gap-3 px-5 py-7 border-b"
+                className="flex items-center justify-between gap-3 px-5 py-7 border-b"
               >
                 <div className="flex items-center gap-3">
                   <Image
-                    src={`https://s3-ecommerce-storage-v2.s3.us-west-2.amazonaws.com/product${Math.floor(Math.random() * 3) + 1}.png`}
+                    src={`https://s3-ecommerce-storage-v2.s3.us-west-2.amazonaws.com/product${
+                      Math.floor(Math.random() * 3) + 1
+                    }.png`}
                     alt={product.name}
                     width={48}
                     height={48}

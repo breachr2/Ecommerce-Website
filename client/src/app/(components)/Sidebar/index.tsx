@@ -110,16 +110,16 @@ export default function Sidebar() {
   return (
     <div className={sidebarClassNames}>
       <div
-        className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${
+        className={`flex gap-2 justify-between md:justify-normal items-center pt-8 ${
           isSidebarCollapsed ? "px-5" : "px-8"
         }`}
       >
         <Image
           src="https://s3-ecommerce-storage-v2.s3.us-west-2.amazonaws.com/logo2.png"
           alt="Website logo"
-          width={27}
-          height={27}
-          className="rounded w-8"
+          width={40}
+          height={40}
+          className="rounded"
         />
         <h1
           className={`${
