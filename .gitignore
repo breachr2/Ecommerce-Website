@@ -1,8 +1,11 @@
-server/node_modules
-client/node_modules
+server/node_modules/
+client/node_modules/
 
-client/.env
-server/.env
+client/dist/
+server/dist/
+
+client/.env/
+server/.env/
 
 .env
 .env.local
