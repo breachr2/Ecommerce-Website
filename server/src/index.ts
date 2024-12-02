@@ -10,6 +10,8 @@ import { PrismaClient } from "@prisma/client";
 /* Imports for Route */
 import dashboardRoutes from "./routes/dashboardRoutes";
 import productRoutes from "./routes/productRoutes";
+import userRoutes from "./routes/userRoutes";
+
 
 app.use(express.json());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -28,6 +30,7 @@ app.get("/api/products", async (req, res) => {
 // example: http://localhost:5000/dashboard
 app.use("/dashboard", dashboardRoutes);
 app.use("/products", productRoutes); // http://localhost:5000/products
+app.use("/users", userRoutes); // http://localhost:5000/users
 
 /* Server */
 const port = process.env.PORT || 8000;
