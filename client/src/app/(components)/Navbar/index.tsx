@@ -1,7 +1,7 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
-import { Bell, Menu, Moon, Settings, Sun } from "lucide-react";
+import { Bell, Menu, Moon, Settings, Sun, CircleUser } from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -59,7 +59,7 @@ export default function Navbar() {
           </div>
           <hr className="w-0 h-7 border border-solid border-1 border-gray-300 mx-3" />
           <div className="flex items-center gap-3 cursor-pointer">
-            <div className="w-9 h-9">Image</div>
+            <CircleUser className="w-9 h-9" />
             <span className="font-semibold">User</span>
           </div>
         </div>
