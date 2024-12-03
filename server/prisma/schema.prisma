@@ -88,12 +88,13 @@ model ExpenseByCategory {
 }
 
 model Reviews {
-  id           Int      @id @default(autoincrement())
-  title        String
-  content      String
-  imageName    String
-  imageUrl     String?
-  rating       Int
-  productId    String
-  product      Products @relation(fields: [productId], references: [productId])
+  id        Int      @id @default(autoincrement())
+  name      String
+  title     String
+  content   String
+  imageName String
+  imageUrl  String?
+  rating    Int
+  productId String
+  product   Products @relation(fields: [productId], references: [productId])
 }

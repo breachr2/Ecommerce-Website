@@ -8,7 +8,7 @@ const upload = multer({
 
 const router = Router();
 
-router.get("/", getReviews);
+router.get("/:productId", getReviews);
 router.post("/", upload.single("image"), createReview);
 
 export default router;

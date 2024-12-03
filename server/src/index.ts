@@ -12,6 +12,7 @@ import dashboardRoutes from "./routes/dashboardRoutes";
 import productRoutes from "./routes/productRoutes";
 import userRoutes from "./routes/userRoutes";
 import expenseRoutes from "./routes/expenseRoutes";
+import reviewRoutes from "./routes/reviewRoutes"
 
 app.use(express.json());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -32,6 +33,7 @@ app.use("/dashboard", dashboardRoutes);
 app.use("/products", productRoutes); // http://localhost:5000/products
 app.use("/users", userRoutes); // http://localhost:5000/users
 app.use("/expenses", expenseRoutes); // http://localhost:5000/expenses
+app.use("/reviews", reviewRoutes) // http://localhost:5000/reviews
 
 /* Server */
 const port = Number(process.env.PORT) || 8000;
