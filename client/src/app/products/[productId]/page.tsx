@@ -1,4 +1,5 @@
 import Reviews, { Review } from "./reviews";
+import ReviewWrapper from "./review-wrapper";
 
 type ParamsType = {
   params: {
@@ -19,7 +20,7 @@ const fetchProduct = async (productId: string) => {
 
 const fetchReviews = async (productId: string): Promise<Review[]> => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/reviews/${productId}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/${productId}/reviews`,
     { cache: "no-store" }
   );
 
@@ -44,7 +45,9 @@ const ProductPage = async ({ params }: ParamsType) => {
       <p>Product Rating : {product.rating}</p>
       <p>Product Stock : {product.stockQuantity}</p>
 
-      <Reviews reviews={reviews} />
+      <ReviewWrapper productId={productId}>
+        <Reviews reviews={reviews} />
+      </ReviewWrapper>
     </div>
   );
 };
