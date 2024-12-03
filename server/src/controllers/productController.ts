@@ -42,3 +42,22 @@ export const createProduct = async (
     res.status(500).json({ message: "Error creating product" });
   }
 };
+
+export const getProductById = async (req: Request, res: Response) => {
+  const { productId } = req.params;
+
+  try {
+    const product = await prisma.products.findUnique({
+      where: { productId: productId },
+    });
+
+    if (!product) {
+      res.status(404).json(`Could not find product with ID ${productId}`);
+      return;
+    }
+
+    res.status(201).json(product);
+  } catch (err) {
+    res.status(500).json("Server error has occured");
+  }
+};
