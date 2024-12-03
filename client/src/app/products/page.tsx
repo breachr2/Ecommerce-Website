@@ -7,6 +7,7 @@ import Header from "@/app/(components)/Header";
 import Rating from "@/app/(components)/Rating";
 import CreateProductModal from "./CreateProductModal";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type ProductFormData = {
   name: string;
@@ -18,6 +19,7 @@ type ProductFormData = {
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   const {
     data: products,
@@ -77,7 +79,8 @@ const Products = () => {
           products?.map((product) => (
             <div
               key={product.productId}
-              className="border shadow rounded-md p-4 max-w-full w-full mx-auto"
+              className="border shadow rounded-md p-4 max-w-full w-full mx-auto cursor-pointer hover:bg-gray-300"
+              onClick={() => router.push(`/products/${product.productId}`)}
             >
               <div className="flex flex-col items-center">
                 <Image
