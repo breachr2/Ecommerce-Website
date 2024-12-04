@@ -13,7 +13,7 @@ const ReviewForm = ({ productId }: { productId: string }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [rating, setRating] = useState<number | null>(null);
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ const ReviewForm = ({ productId }: { productId: string }) => {
     formData.append("rating", String(rating));
     formData.append("productId", productId);
 
-    const response = await fetch(
+    await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/${productId}/reviews`,
       {
         method: "POST",
@@ -35,7 +35,7 @@ const ReviewForm = ({ productId }: { productId: string }) => {
       }
     );
 
-    router.refresh()
+    router.refresh();
   };
 
   return (
