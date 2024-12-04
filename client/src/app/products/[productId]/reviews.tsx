@@ -29,7 +29,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
   }
   return (
     <div className="flex flex-col gap-4 items-center">
-      {reviews.map((review) => (
+      {reviews && reviews.map((review) => (
         <ReviewItem key={review.id} review={review} />
       ))}
     </div>

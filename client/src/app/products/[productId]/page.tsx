@@ -7,7 +7,6 @@ import Divider from "@mui/material/Divider";
 import Rating from "@mui/material/Rating";
 import { Product } from "@/state/api";
 
-
 type tParams = Promise<{ productId: string }>;
 
 const fetchProduct = async (productId: string): Promise<Product> => {
