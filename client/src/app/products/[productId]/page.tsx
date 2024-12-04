@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Reviews, { Review } from "./reviews";
 import ReviewWrapper from "./review-wrapper";
 import Image from "next/image";
@@ -6,11 +7,8 @@ import Divider from "@mui/material/Divider";
 import Rating from "@mui/material/Rating";
 import { Product } from "@/state/api";
 
-type ParamsType = {
-  params: {
-    productId: string;
-  };
-};
+
+type tParams = Promise<{ productId: string }>;
 
 const fetchProduct = async (productId: string): Promise<Product> => {
   const response = await fetch(
@@ -33,8 +31,8 @@ const fetchReviews = async (productId: string): Promise<Review[]> => {
   return reviews;
 };
 
-const ProductPage = async ({ params }: ParamsType) => {
-  const { productId } = await params;
+const ProductPage = async (props: { params: tParams }) => {
+  const { productId } = await props.params;
   const product = await fetchProduct(productId);
   const reviews = await fetchReviews(productId);
 
