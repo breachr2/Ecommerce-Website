@@ -38,7 +38,7 @@ const ProductPage = async ({ params }: ParamsType) => {
   }
 
   return (
-    <div className="flex flex-col border-2 border-red-300 ">
+    <div className="flex flex-col ">
       <h1>Product Id: {productId}</h1>
       <p>Product name : {product.name}</p>
       <p>Product Price: {product.price}</p>

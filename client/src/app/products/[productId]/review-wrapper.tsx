@@ -14,15 +14,18 @@ const ReviewWrapper = ({
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <div>
+    <div className=" flex flex-col items-center gap-2">
       <div>
-        <h1>Reviews</h1>
-        <Button onClick={() => setIsFormOpen((prevState) => !prevState)}>
+        <h1 className="text-2xl font-bold ">All Reviews</h1>
+        <Button
+          variant="contained"
+          onClick={() => setIsFormOpen((prevState) => !prevState)}
+        >
           New Review
         </Button>
-        {isFormOpen && <ReviewForm productId={productId} />}
       </div>
-      {children}
+      {isFormOpen && <ReviewForm productId={productId} />}
+      <div className="w-full max-w-[700px]">{children}</div>
     </div>
   );
 };

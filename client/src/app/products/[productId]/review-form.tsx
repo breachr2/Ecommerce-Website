@@ -13,9 +13,10 @@ const ReviewForm = ({ productId }: { productId: string }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [rating, setRating] = useState<number | null>(null);
-  const router = useRouter();
+  const router = useRouter()
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
@@ -24,78 +25,114 @@ const ReviewForm = ({ productId }: { productId: string }) => {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("rating", String(rating));
+    formData.append("productId", productId);
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/reviews/${productId}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/${productId}/reviews`,
       {
         method: "POST",
         body: formData,
-        headers: {
-          "Content-Type": "application/json",
-        },
       }
     );
 
-    router.refresh();
+    router.refresh()
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <InputLabel htmlFor="name">Name</InputLabel>
-      <TextField
-        type="text"
-        name="name"
-        id="name"
-        onChange={(e) => setName(e.target.value)}
-      />
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className="flex flex-col gap-2 w-full max-w-[450px] p-8 border border-neutral-400 rounded-md bg-gray-200 "
+    >
+      <div>
+        <InputLabel htmlFor="name">Name</InputLabel>
+        <TextField
+          type="text"
+          name="name"
+          id="name"
+          onChange={(e) => setName(e.target.value)}
+          fullWidth
+          size="small"
+        />
+      </div>
 
-      <InputLabel htmlFor="title">Title</InputLabel>
-      <TextField
-        type="text"
-        name="title"
-        id="title"
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
+      <div>
+        <InputLabel htmlFor="title">
+          Title <RedAsterisk />
+        </InputLabel>
+        <TextField
+          type="text"
+          name="title"
+          id="title"
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          fullWidth
+          size="small"
+        />
+      </div>
 
-      <Rating
-        value={rating}
-        name="rating"
-        onChange={(event, newValue) => {
-          setRating(newValue);
-        }}
-      />
+      <div>
+        <InputLabel htmlFor="rating">
+          Rating <RedAsterisk />
+        </InputLabel>
+        <Rating
+          value={rating}
+          name="rating"
+          onChange={(event, newValue) => {
+            setRating(newValue);
+          }}
+          size="medium"
+        />
+      </div>
 
-      <InputLabel htmlFor="content">Content</InputLabel>
-      <TextField
-        type="text"
-        name="content"
-        id="content"
-        onChange={(e) => setContent(e.target.value)}
-        rows={4}
-        multiline
-        required
-      />
+      <div>
+        <InputLabel htmlFor="content">
+          Content <RedAsterisk />
+        </InputLabel>
+        <TextField
+          type="text"
+          name="content"
+          id="content"
+          onChange={(e) => setContent(e.target.value)}
+          rows={4}
+          multiline
+          required
+          fullWidth
+        />
+      </div>
 
-      <InputLabel htmlFor="image">Image</InputLabel>
-      <TextField
-        type="file"
-        name="image"
-        id="image"
-        onChange={(e) => {
-          const target = e.target as HTMLInputElement;
-          const files = target.files;
-          if (files && files[0]) {
-            setFile(files[0]);
-          }
-        }}
-        inputProps={{ accept: "image/*" }}
-        required
-      />
+      <div>
+        <InputLabel htmlFor="image">
+          Upload File <RedAsterisk />
+        </InputLabel>
+        <TextField
+          type="file"
+          name="image"
+          id="image"
+          onChange={(e) => {
+            const target = e.target as HTMLInputElement;
+            const files = target.files;
+            if (files && files[0]) {
+              setFile(files[0]);
+            }
+          }}
+          inputProps={{ accept: "image/*" }}
+          required
+          fullWidth
+          size="small"
+        />
+      </div>
 
-      <Button type="submit">Create Review</Button>
+      <div className="flex justify-end mt-2">
+        <Button type="submit" variant="contained">
+          Create Review
+        </Button>
+      </div>
     </form>
   );
+};
+
+const RedAsterisk = () => {
+  return <span className="text-red-600">*</span>;
 };
 
 export default ReviewForm;

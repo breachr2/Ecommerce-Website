@@ -81,6 +81,13 @@ export const getReviews = async (req: Request, res: Response) => {
 export const createReview = async (req: Request, res: Response) => {
   const { originalname, buffer, mimetype } = req.file as Express.Multer.File;
   const { title, content, productId, rating } = req.body;
+  let name = req.body.name;
+  // console.log(originalname, buffer, mimetype)
+  // console.log(title, content, productId, rating, req.body.name);
+
+  if (req.body.name === "") {
+    name = "Anonymous user";
+  }
 
   const uploadParams = {
     Bucket: bucketName,
@@ -96,17 +103,14 @@ export const createReview = async (req: Request, res: Response) => {
     return;
   }
 
-  const extension = mime.extension(mimetype);
-  const filename = `${originalname}.${extension}`;
-  const imageUrl = `https://s3-ecommerce-storage-v2.s3.us-west-2.amazonaws.com/${filename}`;
-  console.log(imageUrl);
-
+  const imageUrl = `https://dbod44leotqz0.cloudfront.net/${originalname}`;
   const newReview = await prisma.reviews.create({
     data: {
+      name: name,
       title: title,
       imageName: originalname,
       content: content,
-      rating: rating,
+      rating: Number(rating),
       productId: productId,
       imageUrl: imageUrl,
     },

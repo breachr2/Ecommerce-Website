@@ -17,8 +17,8 @@ const router = Router();
 
 router.get("/", getProducts);
 router.post("/", createProduct);
-router.get("/:productId", getProductById);
-router.get("/:productId/reviews", getReviews);
 router.post("/:productId/reviews", upload.single("image"), createReview);
+router.get("/:productId/reviews", getReviews);
+router.get("/:productId", getProductById);
 
 export default router;
