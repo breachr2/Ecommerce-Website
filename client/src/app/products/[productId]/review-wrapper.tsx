@@ -39,7 +39,7 @@ const ReviewWrapper = ({ children, product }: ReviewWrapperProps) => {
           </Button>
         </div>
       </div>
-      {isFormOpen && <ReviewForm productId={product.productId} />}
+      {isFormOpen && <ReviewForm productId={product.productId} setIsFormOpen={setIsFormOpen}/>}
       <div className="w-full max-w-[700px]">{children}</div>
     </div>
   );

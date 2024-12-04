@@ -24,9 +24,8 @@ export type ReviewsProps = {
 };
 
 const Reviews = ({ reviews }: ReviewsProps) => {
-
   if (reviews.length === 0) {
-    return <div className="text-center text-2xl">No reviews yet...</div>
+    return <div className="text-center text-2xl">No reviews yet...</div>;
   }
   return (
     <div className="flex flex-col gap-4 items-center">

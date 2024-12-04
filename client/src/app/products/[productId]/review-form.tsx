@@ -3,11 +3,16 @@
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import Rating from "@mui/material/Rating";
 import { useRouter } from "next/navigation";
 
-const ReviewForm = ({ productId }: { productId: string }) => {
+type ReviewFormProps = {
+  productId: string;
+  setIsFormOpen: React.Dispatch<SetStateAction<boolean>>;
+};
+
+const ReviewForm = ({ productId, setIsFormOpen }: ReviewFormProps) => {
   const [file, setFile] = useState<File | null>(null);
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
@@ -34,7 +39,7 @@ const ReviewForm = ({ productId }: { productId: string }) => {
         body: formData,
       }
     );
-
+    setIsFormOpen(false);
     router.refresh();
   };
 
