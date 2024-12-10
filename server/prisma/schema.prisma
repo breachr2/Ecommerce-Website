@@ -27,6 +27,7 @@ model Products {
   stockQuantity Int
   Sales         Sales[]
   Purchases     Purchases[]
+  Review        Reviews[]
 }
 
 model Sales {
@@ -84,4 +85,16 @@ model ExpenseByCategory {
   amount              BigInt
   date                DateTime
   expenseSummary      ExpenseSummary @relation(fields: [expenseSummaryId], references: [expenseSummaryId])
+}
+
+model Reviews {
+  id        Int      @id @default(autoincrement())
+  name      String
+  title     String
+  content   String
+  imageName String
+  imageUrl  String?
+  rating    Int
+  productId String
+  product   Products @relation(fields: [productId], references: [productId])
 }

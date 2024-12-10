@@ -4,6 +4,7 @@ import { ShoppingBag } from "lucide-react";
 import React from "react";
 import Rating from "../(components)/Rating";
 import Image from "next/image";
+import Link from "next/link";
 
 const CardPopularProducts = () => {
   const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
@@ -20,9 +21,10 @@ const CardPopularProducts = () => {
           <hr />
           <div className="overflow-auto h-full">
             {dashboardMetrics?.popularProducts.map((product) => (
-              <div
+              <Link
+                href={`/products/${product.productId}`}
                 key={product.productId}
-                className="flex items-center justify-between gap-3 px-5 py-7 border-b"
+                className="flex items-center justify-between gap-3 px-5 py-7 border-b cursor-pointer hover:bg-gray-100"
               >
                 <div className="flex items-center gap-3">
                   <Image
@@ -54,7 +56,7 @@ const CardPopularProducts = () => {
                   </button>
                   {Math.round(product.stockQuantity / 1000)}k Sold
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </>
